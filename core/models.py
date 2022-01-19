@@ -18,15 +18,15 @@ class Base(models.Model):
 
 class Service(Base):
     ICON_CHOICES = (
-        ("Ini-cog", "Gear"),
-        ("Ini-stats-up", "Graph"),
-        ("Ini-users", "Users"),
-        ("Ini-layers", "Design"),
-        ("Ini-mobile", "Mobile"),
-        ("Ini-rocket", "Rocket"),
+        ("lni-cog", "Gear"),
+        ("lni-stats-up", "Graph"),
+        ("lni-users", "Users"),
+        ("lni-layers", "Design"),
+        ("lni-mobile", "Mobile"),
+        ("lni-rocket", "Rocket"),
     )
     service = models.CharField("Service", max_length=100)
-    descripton = models.TextField("Description", max_length=200)
+    description = models.TextField("Description", max_length=200)
     icon = models.CharField("Icon", max_length=12, choices=ICON_CHOICES)
 
     class Meta:

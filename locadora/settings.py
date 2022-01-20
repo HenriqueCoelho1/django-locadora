@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-*(d6&ob&2a-g6d(qb-lh#h=c%gm!fa!$@wz1a^x2#qs8ad2_6d"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -76,6 +77,10 @@ WSGI_APPLICATION = "locadora.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    "default": dj_database_url.config()
+}
+
+"""DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "django_loc",
@@ -85,7 +90,7 @@ DATABASES = {
         "PORT": "5432",
     }
 }
-
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -131,4 +136,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+LOGOUT_REDIRECT_URL = "index"
+
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

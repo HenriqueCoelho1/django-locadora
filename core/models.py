@@ -36,6 +36,26 @@ class Service(Base):
     def __str__(self):
         return self.service
 
+class Feature(Base):
+    name = models.CharField("Name", max_length=100)
+    description = models.TextField("Description", max_length=200)
+    ICON_CHOICES = (
+        ("lni-cog", "Gear"),
+        ("lni-laptop-phone", "Laptop"),
+        ("lni-leaf", "Leaf"),
+        ("lni-layers", "Layers"),
+        ("lni-rocket", "Rocket"),
+    )
+    icon = models.CharField("Icon", max_length=18, choices=ICON_CHOICES)
+
+
+    class Meta:
+        verbose_name = "Feature"
+        verbose_name_plural = "Features"
+
+    def __str__(self):
+        return self.name
+
 class Position(Base):
     position = models.CharField("Position", max_length=100)
 

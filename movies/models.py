@@ -16,8 +16,7 @@ class Movie(models.Model):
     price = models.DecimalField(decimal_places=1, max_digits=4)
     stock = models.IntegerField("Stock")
 
-    # gender = models.ForeignKey(Genres, on_delete=models.CASCADE)
     genre = models.ManyToManyField(Genre)
 
     def __str__(self):
-        return f"{self.name}, {self.description}, {self.genre}"
+        return f"{self.name}, {self.description}"

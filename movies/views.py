@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+from .models import Movie, Genre
 
-# Create your views here.
+
+class CreateMovie(CreateView):
+    model = Movie
+    fields = ["name", "description", "price", "stock", "genre"]
+    template_name = "register/form.html"
+    success_url = reverse_lazy("index")
+
+
+class CreateGenre(CreateView):
+    model = Genre
+    fields = ["name", "description"]
+    template_name = "register/form.html"
+    success_url = reverse_lazy("index")

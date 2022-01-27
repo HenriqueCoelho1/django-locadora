@@ -1,4 +1,3 @@
-from tkinter import CASCADE
 from django.db import models
 
 
@@ -16,7 +15,7 @@ class Movie(models.Model):
     price = models.DecimalField(decimal_places=1, max_digits=4)
     stock = models.IntegerField("Stock")
 
-    genre = models.ManyToManyField(Genre)
+    genre = models.ManyToManyField("Genre", related_name="movies")
 
     def __str__(self):
         return f"{self.name}, {self.description}"

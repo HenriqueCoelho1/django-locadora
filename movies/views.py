@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Movie, Genre
 
 
@@ -17,6 +17,7 @@ class CreateGenre(CreateView):
     success_url = reverse_lazy("index")
 
 
+# UPDATE
 class UpdateMovie(UpdateView):
     model = Movie
     fields = ["name", "description", "price", "stock", "genre"]
@@ -28,4 +29,19 @@ class UpdateGenre(UpdateView):
     model = Movie
     fields = ["name", "description"]
     template_name = "register/form.html"
+    success_url = reverse_lazy("index")
+
+
+# DELETE
+
+
+class DeleteGenre(DeleteView):
+    model = Genre
+    template_name = "register/form-delete.html"
+    success_url = reverse_lazy("index")
+
+
+class DeleteMovie(DeleteView):
+    model = Movie
+    template_name = "register/form-delete.html"
     success_url = reverse_lazy("index")

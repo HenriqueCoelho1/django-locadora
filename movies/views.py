@@ -6,7 +6,7 @@ from .models import Movie, Genre
 
 class CreateMovie(CreateView):
     model = Movie
-    fields = ["name", "description", "price", "stock", "genre"]
+    fields = ["name", "description", "price", "stock", "image", "genre"]
     template_name = "register/form.html"
     success_url = reverse_lazy("index")
 
